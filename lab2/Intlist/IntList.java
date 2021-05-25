@@ -46,6 +46,7 @@ public class IntList {
 
     /**
      * Returns a list equal to L with all elements squared. Non-destructive.
+     * Modify and return a fresh new copy.
      */
     public static IntList squareListIterative(IntList L) {
         if (L == null) {
@@ -82,7 +83,13 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList L = A;
+        while (L.rest != null) {
+          L = L.rest;
+        }
+        L. rest = B;
+
+        return A;
     }
 
     /**
@@ -91,10 +98,18 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        IntList L = new IntList(A.first, null);
+        IntList p = L;
+
+        while (A.rest != null) {
+            A = A.rest;
+            p.rest = new IntList(A.first, null);
+            p = p.rest;
+        }
+        p.rest = B;
+
+        return L;
     }
-
-
 
 
 
